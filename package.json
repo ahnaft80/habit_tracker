@@ -1,0 +1,16 @@
+{
+  "name": "habit_tracker",
+  "version": "1.0.0",
+  "description": "A basic habit analytics program",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Rafid",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^30.0.2",
+    "sqlite3": "^5.1.7",
+    "vue": "^3.4.27"
+  }
+}

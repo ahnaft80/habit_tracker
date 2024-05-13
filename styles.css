@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; /* Regular weight for body text */
+    margin: 0;
+    padding: 20px;
+    background: #eef1f5; /* Lighter and cooler background shade */
+    color: #333; /* Darker text for better readability */
+    position: relative;
+    border-radius: 10px; /* Soft rounded corners for the body */
+}
+
+header {
+    background: linear-gradient(135deg, #d3eaf5 0%, #d3eaf5 100%);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px; /* Consistent rounded edges */
+    box-shadow: 0 4px 6px rgba(0, 120, 130, 0.2); /* Subtle shadow for depth */
+    width: 40%;
+    margin-top: 30px;
+    margin-left: 60px;
+    height: 120px;
+}
+
+/* Adjust the size of the logo */
+header img {
+    width: 350px; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.top-right {
+    position: absolute;
+    right: 20px;
+    top: 20px; /* Adjusted for visual balance */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right */
+}
+
+#clock, #calendar input[type="date"] {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: rgb(4, 74, 100);
+    border: 1px solid #ddd; /* Slight border for definition */
+    border-radius: 5px; /* Soft rounded edges */
+    box-shadow: 0 2px 4px rgba(1, 25, 42, 0.1); /* More subtle shadow */
+}
+
+.main {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, content, footer */
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    background: white; /* Background for content area */
+    border-radius: 10px; /* Rounded edges for main content area */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Consistent with design language */
+    
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px; /* More pronounced rounded edges */
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Matching color shadow */
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+.button:hover {
+    background-color: #005ecb;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.primary-button {
+    background: linear-gradient(to right, #96c9e1, #96c9e1); /* Vibrant green gradient */
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+.primary-button:hover {
+    background: linear-gradient(to right, #076565, #024b4b);
+}
+
+.secondary-button {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc; /* Defined borders for secondary buttons */
+}
+
+.secondary-button:hover {
+    background-color: #e2e6ea;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.5);
+    z-index: 1;
+    border-radius: 10px; /* Rounded edges for consistency */
+}
+
+.modal-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: none;
+    z-index: 2;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Prominent shadow for modal */
+}
+
+.habit-list-container {
+    max-height: 25vh; /* Limit to 25% of the viewport height */
+    overflow-y: auto; /* Enable scrolling */
+}
+
+.habit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+.habit-list li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 40%;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 10px;
+}
+
+#showFormButton {
+    margin-top: 10px; /* Increase the top margin from the habit button */
+}
+
+.flip-clock {
+    font-family: 'Courier New', monospace;
+    color: #000000;
+    background-color: #000;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+    width: 200px;
+    margin: 10px auto;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure it's on top of other elements */
+    background-color: #60add1 !important;
+}
+
+
+.flip-clock .number {
+    background-color: #60add1;
+    color: #ffffff;
+    width: auto; /* Adjusted to accommodate varying number widths */
+    height: 80px;
+    display: inline-flex; /* Changed to inline-flex to make numbers appear side by side */
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: 800;
+    border-radius: 5px;
+    margin-right: 5px; /* Added margin between numbers */
+}
+
+.calendar-container {
+    position: fixed; /* Position fixed to keep it fixed on the screen */
+    top: 25%; /* Adjust top position as needed */
+    right: 20px; /* Position to the right of the screen */
+    transform: translateY(-50%); /* Center vertically */
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    background-color: #11729f; /* Dark background */
+    color: #fff; /* White text color */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures no overflow */
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-calendar {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+.flip-calendar::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+    cursor: pointer;
+    position: absolute; /* Position the icon absolutely */
+    top: 50%; /* Vertically center the icon */
+    left: 220px; /* Adjust the left position as needed */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+.formatted-date {
+    padding: 10px;
+    color: #333;
+    font-size: 16px;
+    text-align: center;  /* Centers the text within the div */
+    display: flex;  /* Make the elements flex containers */
+    align-items: center;  /* Vertically center the elements */
+    justify-content: center;  /* Horizontally center the elements */
+}
+
+.display-date {
+    cursor: pointer;
+    text-align: center;
+}
+
+.date-day, .date-month {
+    margin-top: 10px;
+    display: inline-block; /* Change from block to inline-block */
+    font-size: 20px; /* Smaller text for day and month */
+    margin-right: 5px;  /* Add space between day and month */
+    font-weight: bold;
+}
+
+.date-number {
+    font-size: 72px; /* Large font size for the date number */
+    font-weight: bold; /* Bold font weight for impact */
+}
+
+.hidden-date-picker {
+    display: none; /* Ensures the input is not visually present */
+}
+
+
+.danger-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px; /* More pronounced rounded edges */
+    background-color: #65a5c3; /* Red for danger button */
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(220, 53, 69, 0.3); /* Matching color shadow */
+}
+
+.edit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px; /* More pronounced rounded edges */
+    background-color: #3896c1; /* Red for danger button */
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(220, 53, 69, 0.3); /* Matching color shadow */ 
+}
+
+.danger-button:hover {
+    background-color: #cf1b5a; /* Darker red on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.edit-button:hover {
+    background-color: #b3b12e; /* Darker red on hover */
+    transform: translateY(-2px); /* Lift effect on hover */ 
+}
+
+.vertical-line {
+    position: fixed;  /* Changed from absolute to fixed to maintain the line across the entire page */
+    top: 0;
+    bottom: 0;       /* Not necessary when height is set to 100vh */
+    left: 54%;       /* Center the line horizontally */
+    width: 2px;      /* Thickness of the line */
+    background-color: #ccc;  /* Color of the line */
+    z-index: 0;      /* Ensure it does not overlap important content */
+    height: 100vh;   /* Full viewport height */
+}
+
+/* Adjustments to the main container */
+..main {
+    position: relative; /* Ensure position relative for absolutely positioned elements inside */
+    height: 100vh; /* Ensure the main element covers the entire viewport */
+}
+
+/* Adjustments to the habit list container */
+.habit-list-container {
+    position: relative; /* Ensure relative positioning for absolute elements */
+}
+
+/* Adjustments to the habit list */
+.habit-list li {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    justify-content: space-between; /* Distributes space between items */
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.habit-list label {
+    flex: 1; /* Allows the label to take up the rest of the space */
+    margin-left: 10px; /* Spacing between checkbox and label */
+}
+
+/* Adjustments to the header */
+header {
+    position: relative; /* Ensure relative positioning for absolute elements */
+}
+
+/* Adjustments to the logo */
+header img {
+    position: relative; /* Ensure relative positioning for absolute elements */
+    height: auto; /* Maintain aspect ratio */
+    width: 320px; /* Set the width of the logo */
+    margin-top: 20px;
+}
+
+.big-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #396da9;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Matching color shadow */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.big-button:hover {
+    background-color: #005ecb;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.info-button {
+    background: none;      /* Removes any background */
+    border: none;          /* Removes the border */
+    cursor: pointer;       /* Ensures it appears clickable */
+    color: #a2b4c7;        /* Icon color */
+    padding: 5px;          /* Minimal padding to increase clickable area */
+    display: flex;         /* Ensures proper alignment of the icon */
+    align-items: center;   /* Vertically center aligns the icon */
+    justify-content: center; /* Horizontally center aligns the icon */
+}
+
+.info-button i {
+    font-size: 18px; /* Adjust the size of the icon as needed */
+}
+
+.habit-item {
+    position: relative; /* Ensure relative positioning for absolute children */
+    transition: opacity 0.5s ease-out;
+    opacity: 1; /* Start fully visible */
+}
+
+.habit-checkbox:checked + .habit-label {
+    text-decoration: line-through; /* Optional: visually indicate completion */
+}
+
+.delete-button {
+    position: relative; /* Ensure the button content is positioned relative */
+    color: white; /* Set the color of the text, including pseudo-elements */
+    margin-left: -30px;
+    cursor: pointer;
+    background: rgb(167, 36, 36); /* Red background for the button */
+    border: none;
+    width: 25px; /* Define a specific width */
+    height: 25px; /* Define a specific height */
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    border-radius: 50%; /* Make the button round */
+}
+
+.delete-button:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+.delete-button::before {
+    font-size: 20px; /* Size of the minus sign */
+    color: white; /* Color of the minus sign */
+}
+
+.hidden {
+    display: none  !important; /* Hide elements with this class */
+}
+
+
+
+

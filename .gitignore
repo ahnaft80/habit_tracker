@@ -1,0 +1,14 @@
+# Ignore all data files
+data/
+
+# Ignore configuration files that may contain sensitive information
+.env
+
+# Ignore node_modules
+node_modules/
+
+# Ignore all log files
+*.log
+
+# Ignore other specific files that might be sensitive or irrelevant
+secretfile.txt

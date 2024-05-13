@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula</title>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Content -->
+    <main>
+        <!-- Flip Clock -->
+        <div class="vertical-line"></div>
+        <div class="right-side">
+            <!-- Content for the right side of the page -->
+        </div>
+        <div id="clock" class="flip-clock"></div>
+        </div>
+        
+
+        <!-- Header -->
+        <header>
+            <img src="logo/vectorcopy/default-monochrome.svg" alt="Your Logo">
+        </header>
+        
+        
+        <!-- Button to Add Habit with Font Awesome Icon -->
+        <button id="showFormButton" class="button primary-button" aria-label="Add new habit">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button id="deleteHabitButton" class="button danger-button" aria-label="Delete habit">
+            <i class="fas fa-minus"></i>
+        </button>
+        <button id="editHabitButton" class="button edit-button" aria-label="Edit habit">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button id="dashboardButton" class="big-button" aria-label="Dashboard">
+            <i class="fas fa-chart-line"></i>
+        </button>
+        
+
+        <!-- Modal Overlay -->
+        <div id="modalOverlay" class="modal-overlay"></div>
+
+        <!-- Habit Form Modal -->
+        <form id="habitForm" class="modal-form">
+            <h2>Add New Habit</h2>
+            <label for="habitName">Habit Name:</label>
+            <input type="text" id="habitName" name="habitName" required><br>
+            <label for="habitDescription">Description:</label>
+            <textarea id="habitDescription" name="habitDescription" rows="4" cols="50"></textarea><br>
+            <div class="form-actions">
+                <button type="submit" class="button primary-button">Save Habit</button>
+                <button type="button" id="closeFormButton" class="button secondary-button">Cancel</button>
+            </div>
+        </form>
+        
+        <!-- List to Display Habits -->
+        <ul id="habitList" class="habit-list"></ul>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="renderer.js"></script>
+</body>
+</html>
